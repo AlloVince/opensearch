@@ -1,4 +1,4 @@
-<!-- agent.protocol reference: https://github.com/AlloVince/agent.protocol commit 0f98a089a5f3b176171a9059cc9968cbb5c1dd0f (v0.3.0 source, clean worktree; no release tag verified). -->
+<!-- agent.protocol reference: https://github.com/AlloVince/agent.protocol commit 0f98a089a5f3b176171a9059cc9968cbb5c1dd0f (v0.3.0 source, clean worktree; no release tag verified); path privacy rules adopted from commit b4bdadf0a6ddb21a8c85a3db2968d6c08b3a241e. -->
 
 # OpenSearch image
 
@@ -9,7 +9,7 @@
 - Read by task: start with `README.md`, then inspect `Dockerfile` and `.github/workflows/docker-build.yml` for build or release work. Do not scan unrelated repositories.
 - Official operations: use the documented Docker build command and the GitHub Actions workflow; runtime Compose commands live in the operations owners, not this repository. Do not create Agent-only build or release paths.
 - Existing capability: retain the pinned OpenSearch base image and its analysis plugin installation. The Dockerfile version and CI workflow are the source of truth for build/release behavior.
-- System: `/Users/allovince/Developer/yinxing.super`; ownership is in `../yinxing.super/docs/architecture/repositories.md`, routing is in `../yinxing.super/docs/architecture/subprojects.md`, and search ownership/contracts are under `../yinxing.super/docs/contracts/`.
+- System: `../yinxing.super` (paths are relative to this repository root and assume sibling checkouts); ownership is in `../yinxing.super/docs/architecture/repositories.md`, routing is in `../yinxing.super/docs/architecture/subprojects.md`, and search ownership/contracts are under `../yinxing.super/docs/contracts/`.
 
 Before work, record HEAD, branch, and status. Preserve existing work; do not reset, overwrite, commit, push, tag, publish, or release without explicit human authorization.
 
@@ -46,6 +46,8 @@ Verify actual behavior from Dockerfile, workflow configuration, image build resu
 - CLI, batch, and long-running tasks use existing logging and give phases/progress, failure reasons, final summary, and exit status.
 
 ## Documentation
+
+Use repository-relative paths for internal navigation and verified cross-repository relative paths with their layout assumptions, or credential-free repository URLs plus paths. Do not persist personal usernames, home directories, or absolute checkout paths in repository files, including comments, command examples, and generated artifacts. Locate checkouts at runtime; report unresolved locations rather than guessing.
 
 `README.md` and `owner/` are human-facing. `docs/` holds only stable knowledge that code, tests, schemas, configuration, or CLI help cannot express and that reduces future misjudgment, rediscovery, context, or reconstruction cost.
 
